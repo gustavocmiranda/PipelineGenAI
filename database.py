@@ -20,6 +20,7 @@ def salvar_no_postgres(dados: Vendas):
     Funcão para salvar no PostgresSQL
     '''
     try:
+        print('tentando conectar')
         conn = psycopg2.connect(
             host=DB_HOST,
             database=DB_NAME,
@@ -28,6 +29,7 @@ def salvar_no_postgres(dados: Vendas):
         )
         cursor = conn.cursor()
 
+        print('conectado')
         insert_query = sql.SQL(
             ''' INSERT INTO vendas (email, data, valor, quantidade, produto) 
                 VALUES (%s, %s, %s, %s, %s)'''
